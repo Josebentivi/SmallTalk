@@ -1,0 +1,53 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: 'Arial', sans-serif;
+    background-color: #96db9c; /* Cor de fundo conforme a imagem */
+    height: 100vh;
+}
+
+.container {
+    width: 100%; /* Maximiza o uso do espaço horizontal disponível */
+    max-width: 1000px; /* Limita o tamanho máximo */
+    text-align: center;
+}
+
+.icon img {
+    width: 80px; /* Ajuste conforme necessário */
+}
+
+.menu {
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Ajusta os botões em coluna */
+}
+
+.menu-item {
+    background-color: #015958;
+    color: white;
+    text-decoration: none;
+    padding: 20px 10px; /* Aumenta o padding para um botão maior */
+    margin: 10px 0; /* Espaçamento entre botões */
+    border-radius: 10px; /* Bordas mais arredondadas */
+    display: flex;
+    flex-direction: column; /* Ícones acima do texto */
+    align-items: center; /* Centraliza o conteúdo dos botões */
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.menu-item img {
+    width: 50px; /* Tamanho dos ícones */
+    margin-bottom: 8px; /* Espaço entre o ícone e o texto */
+}
+
+.menu-item span {
+    font-size: 18px; /* Tamanho do texto */
+}
+
+.menu-item:hover {
+    background-color: #555; /* Efeito de hover */
+}

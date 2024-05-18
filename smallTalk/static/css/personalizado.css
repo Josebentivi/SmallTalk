@@ -1,0 +1,59 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #1abc9c; /* Cor de fundo similar à imagem */
+    font-family: 'Arial', sans-serif;
+}
+
+.container {
+    background-color: #128767; /* Cor de fundo do contêiner */
+    height: fit-content;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.25);
+    padding: 20px;
+    text-align: center;
+    width: 100%;
+}
+
+.header {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.header h1 {
+    color: white;
+    font-size: 24px;
+}
+
+.sound-icon {
+    width: 40px;
+    position: relative;
+    right: 10px;
+    top: 10px;
+}
+
+.exercise-list {
+    display: flex;
+    flex-direction: column;
+}
+
+.exercise-item {
+    background-color: #c4e3d3; /* Cor de fundo dos botões */
+    border: none;
+    border-radius: 20px;
+    margin: 10px 0;
+    padding: 15px;
+    color: #333;
+    font-size: 18px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.exercise-item:hover {
+    background-color: #b4d3c3;
+}

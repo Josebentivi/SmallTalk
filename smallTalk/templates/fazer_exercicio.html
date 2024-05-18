@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercício X</title>
+    <link rel="stylesheet" href="../static/css/fazer_exercicio.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Exercício X</h1>
+        </header>
+        <div class="exercise-content">
+            <p>1. Com os dedos apoiados no nariz, vibrar a boca e o nariz. Emita um som como se fosse de abelha (hummmmmm) por certa de 1 minuto.</p>
+            <p>Fique 30 segundos em silêncio. Repita o movimento em cinco vezes.</p>
+            <p>2. Com um pequeno objeto, que pode ser um lápis, colocado apenas 1 cm dentro da boca e leia a frases.</p>
+            <p>“A clareza da comunicação é um fator determinante na conquista da confiança, que por sua vez, é fundamental na construção da credibilidade. A credibilidade é fator essencial do êxito do orador.”</p>
+        </div>
+        <button class="record-button" id="recordButton">
+            <img src="../static/images/icone_microfone.png" alt="Ícone de gravação"> <!-- Substitua pelo caminho correto do ícone -->
+        </button>
+        <div class="feedback-area">
+            <form action= "/detalhes" method="post">
+                <p><button href="/detalhes" class="exercise-item" name="botao" value="gerar" data-bs-toggle="modal" data-bs-target="#janela">Resultado</button></p>
+            <form>
+        </div>
+    </div>
+</body>
+
+<script>
+    let mediaRecorder;
+    let audioChunks = [];
+
+    document.getElementById('recordButton').addEventListener('click', () => {
+        if (mediaRecorder && mediaRecorder.state === "recording") {
+            mediaRecorder.stop();
+            document.getElementById('recordButton').textContent = "Gravar";
+        } else {
+            navigator.mediaDevices.getUserMedia({audio: true})
+            .then(stream => {
+                mediaRecorder = new MediaRecorder(stream);
+                mediaRecorder.start();
+                
+                mediaRecorder.addEventListener("dataavailable", event => {
+                    audioChunks.push(event.data);
+                });
+
+                mediaRecorder.addEventListener("stop", () => {
+                    const audioBlob = new Blob(audioChunks, {type: 'audio/mp3'});
+                    audioChunks = [];
+                    sendData(audioBlob);
+                });
+
+                document.getElementById('recordButton').textContent = "Parar";
+            });
+        }
+    });
+
+    function sendData(audioBlob) {
+        const formData = new FormData();
+        formData.append("audio", audioBlob);
+
+        fetch("/upload", {method: "POST", body: formData})
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error(error));
+    }
+</script>
+
+<div class="modal fade" id="janela" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalCenterTitle">Aguarde...</h5>
+      </div>
+      <div class="modal-footer">
+        <div class="spinner-border" role="status">
+          <span class="sr-only"></span>
+        </div>
+      </div>
+      <div class="col g-3 align-items-center">
+
+      </div>
+
+
+    </div>
+  </div>
+</div>
+
+</html>

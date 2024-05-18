@@ -1,0 +1,51 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: Arial, sans-serif;
+    background-color: #1abc9c;
+}
+
+.container {
+    background-color: #004d40; /* Alterar cor de fundo conforme necessário */
+    color: #fff;
+    width: 90%;
+    max-width: 600px;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+}
+
+.exercise-content {
+    background-color: #00695c;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+.record-button {
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.record-button img {
+    width: 100px; /* Ajuste o tamanho conforme necessário */
+}
+
+.feedback-area {
+    background-color: #00796b;
+    color: #ffffff;
+    padding: 10px;
+    margin-top: 20px;
+    border-radius: 5px;
+    min-height: 50px; /* Para garantir visibilidade mesmo quando vazio */
+}
+
+header h1 {
+    margin-bottom: 20px;
+}
